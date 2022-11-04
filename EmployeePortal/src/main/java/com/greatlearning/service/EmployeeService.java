@@ -1,26 +1,21 @@
 package com.greatlearning.service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.greatlearning.model.Employee;
-import com.greatlearning.repository.EmployeeRepository;
 
-@Service
-public class EmployeeService {
-	@Autowired  
-	EmployeeRepository employeeRepository; 
-	
+import java.util.List;
+
+import com.greatlearning.model.Employee;
+
+public interface EmployeeService {
+
+	// 3. add employee data inside db
+	Employee addEmployee(Employee employee);
+
+	//4. get all employee data
+	List<Employee> getAllEmployees();
+
 	//6.updating a record  
-			public void update(Employee employee)   
-			{  
-				employeeRepository.save(employee);  
-			}
+	void update(Employee employee);
 
 	//7.deleting a specific record by using the method deleteById() of CrudRepository  
-		public void delete(int id)   
-		{  
-			employeeRepository.deleteById(id);  
-		}
+	void delete(Long id);
 
-		
-	
 }

@@ -1,10 +1,10 @@
 package com.greatlearning.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.greatlearning.model.Employee;
 
-public interface EmployeeRepository {
-	
-	public void save(Employee employee);
-	public void deleteById(int id);
+public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 
+	
 }
