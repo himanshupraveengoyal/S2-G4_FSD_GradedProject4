@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name="employee")  
 public class Employee {
 	
-	
 	//Defining employee id as primary key  
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
