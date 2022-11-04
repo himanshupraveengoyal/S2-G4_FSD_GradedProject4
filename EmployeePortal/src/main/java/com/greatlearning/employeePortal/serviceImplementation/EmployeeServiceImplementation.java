@@ -1,12 +1,12 @@
-package com.greatlearning.serviceImplementation;
+package com.greatlearning.employeePortal.serviceImplementation;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.greatlearning.model.Employee;
-import com.greatlearning.repository.EmployeeRepository;
-import com.greatlearning.service.EmployeeService;
+import com.greatlearning.employeePortal.Repository.EmployeeRepository;
+import com.greatlearning.employeePortal.model.Employee;
+import com.greatlearning.employeePortal.service.EmployeeService;
 
 @Service
 public class EmployeeServiceImplementation implements EmployeeService {
@@ -25,7 +25,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
 	public List<Employee> getAllEmployees() {
 		return employeeRepository.findAll();
 	}
-	
+
 	// 5. get employee based on id
 	@Override
 	public Employee getEmployeeBasedOnId(long id) {
@@ -43,4 +43,5 @@ public class EmployeeServiceImplementation implements EmployeeService {
 	public void delete(Long id) {
 		employeeRepository.deleteById(id);
 	}
+
 }

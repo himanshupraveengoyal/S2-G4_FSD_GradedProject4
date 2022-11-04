@@ -1,8 +1,7 @@
-package com.greatlearning.repository;
+package com.greatlearning.employeePortal.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.greatlearning.model.Employee;
+import com.greatlearning.employeePortal.model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 

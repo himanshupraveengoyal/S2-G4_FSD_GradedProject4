@@ -1,4 +1,4 @@
-package com.greatlearning.controller;
+package com.greatlearning.employeePortal.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.greatlearning.model.Employee;
-import com.greatlearning.service.EmployeeService;
+import com.greatlearning.employeePortal.model.Employee;
+import com.greatlearning.employeePortal.service.EmployeeService;
 
 @RestController
 @RequestMapping("/employee")
@@ -34,25 +34,41 @@ public class EmployeeController {
 	public List<Employee> getAllEmployees() {
 		return employeeService.getAllEmployees();
 	}
-	
-	
-	// 5. Your application should provide endpoint to fetch or get an employee record specifically 
+
+	// 5. Your application should provide endpoint to fetch or get an employee
+	// record specifically
 	// based on the id of that employee
-	@GetMapping("/{id}")
-	public Employee getEmployeeBasedOnId(long id) {
-		return employeeService.getEmployeeBasedOnId(id);
+	@GetMapping("/getEmployeeBasedOnId/{id}")
+	public Employee getEmployeeBasedOnId(@PathVariable long id) {
+		try {
+			return employeeService.getEmployeeBasedOnId(id);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	// 6. creating put mapping that updates the employee detail
 	@PostMapping("/updateEmployee")
 	private Employee update(@RequestBody Employee employee) {
-		employeeService.update(employee);
-		return employee;
+		try {
+			Employee e=getEmployeeBasedOnId(employee.getId());
+			if(e==null) return null;
+			employeeService.update(employee);
+			return employee;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	// 7.creating a delete mapping that deletes a specified employee
-	@DeleteMapping("/{employeeid}")
-	private void deleteEmployee(@PathVariable("employeeid") Long employeeid) {
-		employeeService.delete(employeeid);
+	@DeleteMapping("/deleteEmployee/{id}")
+	private String deleteEmployee(@PathVariable("id") Long id) {
+		try {
+			employeeService.delete(id);
+			return "Deleted employee id - " + id;
+		} catch (Exception e) {
+			return "Employee not found";
+		}
 	}
+
 }

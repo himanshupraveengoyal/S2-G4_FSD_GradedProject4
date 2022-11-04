@@ -1,8 +1,7 @@
-package com.greatlearning.service;
+package com.greatlearning.employeePortal.service;
 
 import java.util.List;
-
-import com.greatlearning.model.Employee;
+import com.greatlearning.employeePortal.model.Employee;
 
 public interface EmployeeService {
 
@@ -11,7 +10,7 @@ public interface EmployeeService {
 
 	// 4. get all employee data
 	List<Employee> getAllEmployees();
-	
+
 	// 5. get employee based on id
 	Employee getEmployeeBasedOnId(long id);
 
