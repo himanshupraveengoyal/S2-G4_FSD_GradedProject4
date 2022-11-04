@@ -1,60 +1,62 @@
 package com.greatlearning.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 //mark class as an Entity   
 @Entity  
 //defining class name as Table name  
-@Table  
+@Table(name="employee")  
 public class Employee {
 	//Defining employee id as primary key  
-		@Id  
+		@Id
+		@GeneratedValue(strategy = GenerationType.AUTO)
+		public long id;
+		public String firstName;
+		public String lastName;
+		public String email;
 		
-		@Column  
-		private int employee_id;  
+		public Employee() {
+			
+		}
+		
+		public Employee(String firstName, String lastName, String email) {
+			super();
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.email = email;
+		}
+
+		public long getId() {
+			return id;
+		}
+		public void setId(long id) {
+			this.id = id;
+		}
+		public String getFirstName() {
+			return firstName;
+		}
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+		public String getLastName() {
+			return lastName;
+		}
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+
 		@Override
 		public String toString() {
-			return "Employee [employee_id=" + employee_id + ", employee_First_Name=" + employee_First_Name
-					+ ", employee_Second_Name=" + employee_Second_Name + ", employee_email_id=" + employee_email_id
-					+ "]";
+			return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 		}
-		@Column  
-		private String employee_First_Name;  
-		@Column  
-		private String employee_Second_Name;  
-		@Column  
-		private String employee_email_id;  
-		public int getemployee_id()   
-		{  
-		return employee_id;  
-		}  
-		public void setemployee_id(int employee_id)   
-		{  
-		this.employee_id = employee_id;  
-		}  
-		public String getemployee_First_Name()  
-		{  
-		return employee_First_Name;  
-		}  
-		public void setemployee_First_Name(String employee_First_Name)   
-		{  
-		this.employee_First_Name = employee_First_Name;  
-		}  
-		public String getemployee_Second_Name()   
-		{  
-		return employee_Second_Name;  
-		}  
-		public void setemployee_Second_Name(String employee_Second_Name)   
-		{  
-		this.employee_Second_Name = employee_Second_Name;  
-		}  
-		public String getemployee_email_id()   
-		{  
-		return employee_email_id;  
-		}  
-		public void setemployee_email_id(String employee_email_id)   
-		{  
-		this.employee_email_id = employee_email_id;  
-		}  
 }
