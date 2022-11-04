@@ -10,8 +10,15 @@ import javax.persistence.Table;
 public class Employee {
 	//Defining employee id as primary key  
 		@Id  
+		
 		@Column  
 		private int employee_id;  
+		@Override
+		public String toString() {
+			return "Employee [employee_id=" + employee_id + ", employee_First_Name=" + employee_First_Name
+					+ ", employee_Second_Name=" + employee_Second_Name + ", employee_email_id=" + employee_email_id
+					+ "]";
+		}
 		@Column  
 		private String employee_First_Name;  
 		@Column  
