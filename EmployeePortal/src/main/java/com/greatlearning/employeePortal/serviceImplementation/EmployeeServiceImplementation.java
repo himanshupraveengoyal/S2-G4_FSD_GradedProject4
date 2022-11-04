@@ -3,6 +3,8 @@ package com.greatlearning.employeePortal.serviceImplementation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import com.greatlearning.employeePortal.Repository.EmployeeRepository;
 import com.greatlearning.employeePortal.entity.Employee;
@@ -42,6 +44,18 @@ public class EmployeeServiceImplementation implements EmployeeService {
 	@Override
 	public void delete(Long id) {
 		employeeRepository.deleteById(id);
+	}
+
+	// 8.Fetch an employee by first name 
+	@Override
+	public Employee getEmployeeByFirstName(String firstName) {
+		return employeeRepository.findAll(firstName).get();
+	}
+
+	// 9.Fetch List of employee by first name sorted in asc
+	@Override
+	public List<Employee> getEmployeeByFirstNameSorted(String firstName) {
+		return (List<Employee>) employeeRepository.findAll(Sort.by(Direction.ASC ,firstName));
 	}
 
 }

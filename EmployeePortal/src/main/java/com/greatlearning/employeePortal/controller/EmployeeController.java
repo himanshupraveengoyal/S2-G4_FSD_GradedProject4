@@ -75,4 +75,24 @@ public class EmployeeController {
 		}
 	}
 
+	//8. Your application should provide endpoint to fetch or get an employee
+	//  based on the first name of that employee
+	@GetMapping("/search/{firstName}")
+	public Employee getEmployeeByFirstName(@PathVariable String firstName) {
+		try {
+			return employeeService.getEmployeeByFirstName(firstName);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	// 9.Fetch List of employee by first name sorted in asc
+	@GetMapping("/sort?order=asc")
+	public List<Employee> getEmployeeByFirstNameSorted(@PathVariable String firstName) {
+		try {
+			return employeeService.getEmployeeByFirstNameSorted(firstName);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

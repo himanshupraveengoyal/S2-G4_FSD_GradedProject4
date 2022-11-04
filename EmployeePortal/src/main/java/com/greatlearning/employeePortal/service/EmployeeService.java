@@ -21,4 +21,9 @@ public interface EmployeeService {
 	// 7.deleting a specific record by using the method deleteById() of
 	void delete(Long id);
 
+	// 8.Fetch an employee by first name 
+	Employee getEmployeeByFirstName(String firstName);
+
+	// 9.Fetch List of employee by first name sorted in asc
+	List<Employee> getEmployeeByFirstNameSorted(String firstName);
 }
