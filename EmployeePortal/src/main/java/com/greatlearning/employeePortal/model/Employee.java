@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Employee {
 
-	// Defining employee id as primary key
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
