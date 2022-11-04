@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.greatlearning.employeePortal.model.Employee;
+import com.greatlearning.employeePortal.entity.Employee;
 import com.greatlearning.employeePortal.service.EmployeeService;
 
 @RestController
@@ -24,8 +24,11 @@ public class EmployeeController {
 	// 3. Now Your application should be able to add employees data in the db if and
 	// only if the authenticated user is ADMIN-
 	@PostMapping("/addEmployee")
-	public Employee addEmployee(@RequestBody Employee employee) {
-		return employeeService.addEmployee(employee);
+	public String addEmployee(@RequestBody Employee employee) {
+		if (!AppUsersController.isAdminSessionActive)
+			return "Please authenticate first with admin credentials";
+		employeeService.addEmployee(employee);
+		return "Employee Saved Successfully!!!";
 	}
 
 	// 4. Your application should provide an endpoint to list all the employees
@@ -51,8 +54,9 @@ public class EmployeeController {
 	@PostMapping("/updateEmployee")
 	private Employee update(@RequestBody Employee employee) {
 		try {
-			Employee e=getEmployeeBasedOnId(employee.getId());
-			if(e==null) return null;
+			Employee e = getEmployeeBasedOnId(employee.getId());
+			if (e == null)
+				return null;
 			employeeService.update(employee);
 			return employee;
 		} catch (Exception e) {

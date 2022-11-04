@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.greatlearning.employeePortal.Repository.EmployeeRepository;
-import com.greatlearning.employeePortal.model.Employee;
+import com.greatlearning.employeePortal.entity.Employee;
 import com.greatlearning.employeePortal.service.EmployeeService;
 
 @Service

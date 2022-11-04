@@ -1,4 +1,4 @@
-package com.greatlearning.employeePortal.model;
+package com.greatlearning.employeePortal.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +17,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class AppUsers {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String username;
-	
+
 	private String password;
-	
+
 	@OneToOne
 	private Roles roles;
 
