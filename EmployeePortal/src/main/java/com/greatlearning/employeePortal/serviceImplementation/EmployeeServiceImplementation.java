@@ -48,14 +48,19 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
 	// 8.Fetch an employee by first name 
 	@Override
-	public Employee getEmployeeByFirstName(String firstName) {
-		return employeeRepository.findAll(firstName).get();
+	public List<Employee> getEmployeeByFirstName(String firstName) {
+		return (List<Employee>) employeeRepository.findAllByName(firstName);
 	}
 
-	// 9.Fetch List of employee by first name sorted in asc
+	// 9.Fetch List of employee by first name sorted in asc or desc
 	@Override
-	public List<Employee> getEmployeeByFirstNameSorted(String firstName) {
+	public List<Employee> getEmployeeByFirstNameSortedASC(String firstName) {
 		return (List<Employee>) employeeRepository.findAll(Sort.by(Direction.ASC ,firstName));
+	}
+
+	@Override
+	public List<Employee> getEmployeeByFirstNameSortedDESC(String firstName) {
+		return (List<Employee>) employeeRepository.findAll(Sort.by(Direction.DESC ,firstName));
 	}
 
 }

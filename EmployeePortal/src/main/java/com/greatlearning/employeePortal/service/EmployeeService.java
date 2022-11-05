@@ -22,8 +22,9 @@ public interface EmployeeService {
 	void delete(Long id);
 
 	// 8.Fetch an employee by first name 
-	Employee getEmployeeByFirstName(String firstName);
+	List<Employee> getEmployeeByFirstName(String firstName);
 
 	// 9.Fetch List of employee by first name sorted in asc
-	List<Employee> getEmployeeByFirstNameSorted(String firstName);
+	List<Employee> getEmployeeByFirstNameSortedASC(String firstName);
+	List<Employee> getEmployeeByFirstNameSortedDESC(String firstName);
 }
