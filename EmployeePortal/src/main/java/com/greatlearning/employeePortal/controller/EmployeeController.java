@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.greatlearning.employeePortal.entity.Employee;
-import com.greatlearning.employeePortal.service.EmployeeService;
+import com.greatlearning.employeePortal.serviceImplementation.EmployeeServiceImplementation;
 
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
 
 	@Autowired
-	EmployeeService employeeService;
+	EmployeeServiceImplementation employeeService;
 
 	// 3. Now Your application should be able to add employees data in the db if and
 	// only if the authenticated user is ADMIN-
@@ -75,8 +75,8 @@ public class EmployeeController {
 		}
 	}
 
-	//8. Your application should provide endpoint to fetch or get an employee
-	//  based on the first name of that employee
+	// 8. Your application should provide endpoint to fetch or get an employee
+	// based on the first name of that employee
 	@GetMapping("/search/{firstName}")
 	public List<Employee> getEmployeeByFirstName(@PathVariable String firstName) {
 		try {
@@ -87,23 +87,10 @@ public class EmployeeController {
 	}
 
 	// 9.Fetch List of employee by first name sorted in asc
-	@GetMapping("/sort?order=asc")
-	public List<Employee> getEmployeeByFirstNameSortedASC(@PathVariable String firstName) {
-		try {
-			return employeeService.getEmployeeByFirstNameSortedASC(firstName);
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	// 9.Fetch List of employee by first name sorted in desc
-
-	@GetMapping("/sort?order=desc")
-	public List<Employee> getEmployeeByFirstNameSortedDESC(@PathVariable String firstName) {
-		try {
-			return employeeService.getEmployeeByFirstNameSortedDESC(firstName);
-		} catch (Exception e) {
-			return null;
-		}
+	@GetMapping("/getEmployeesSortedByOrder")
+	public List<Employee> getEmployeesSortedByOrder(String order) {
+		if (order.contains("desc"))
+			return employeeService.getEmployeeByFirstNameSortedDESC();
+		return employeeService.getEmployeeByFirstNameSortedASC();
 	}
 }

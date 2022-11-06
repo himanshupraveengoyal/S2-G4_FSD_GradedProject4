@@ -1,4 +1,4 @@
-package com.greatlearning.employeePortal.Repository;
+package com.greatlearning.employeePortal.repository;
 
 import java.util.Optional;
 import java.util.List;
@@ -10,7 +10,6 @@ import com.greatlearning.employeePortal.entity.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-    Optional<Employee> findAll(String firstName);
-    @Query("select * from Employee where firstName = ?1")
+    @Query("SELECT e FROM Employee e WHERE e.firstName= ?1")
     List<Employee> findAllByName(String firstName);
 }

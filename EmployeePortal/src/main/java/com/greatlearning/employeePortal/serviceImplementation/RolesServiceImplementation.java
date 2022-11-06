@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.greatlearning.employeePortal.Repository.RolesRepository;
 import com.greatlearning.employeePortal.entity.Roles;
+import com.greatlearning.employeePortal.repository.RolesRepository;
 import com.greatlearning.employeePortal.service.RolesService;
 
 @Service

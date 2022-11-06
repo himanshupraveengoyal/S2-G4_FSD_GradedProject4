@@ -1,4 +1,4 @@
-package com.greatlearning.employeePortal.Repository;
+package com.greatlearning.employeePortal.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

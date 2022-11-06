@@ -25,6 +25,6 @@ public interface EmployeeService {
 	List<Employee> getEmployeeByFirstName(String firstName);
 
 	// 9.Fetch List of employee by first name sorted in asc
-	List<Employee> getEmployeeByFirstNameSortedASC(String firstName);
-	List<Employee> getEmployeeByFirstNameSortedDESC(String firstName);
+	List<Employee> getEmployeeByFirstNameSortedASC();
+	List<Employee> getEmployeeByFirstNameSortedDESC();
 }

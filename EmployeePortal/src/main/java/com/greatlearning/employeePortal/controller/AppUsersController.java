@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.greatlearning.employeePortal.encryption.PasswordEncryption;
 import com.greatlearning.employeePortal.entity.AppUsers;
 import com.greatlearning.employeePortal.serviceImplementation.UserServiceImplementation;
 
@@ -21,6 +22,7 @@ public class AppUsersController {
 	@PostMapping("/addUser")
 	public String addUser(@RequestBody AppUsers user) {
 		try {
+			user.setPassword(PasswordEncryption.getMd5(user.getPassword()));
 			userServiceImplementation.addUser(user);
 		} catch (Exception e) {
 			return "User cannot be saved. User role may not exists";
@@ -32,6 +34,7 @@ public class AppUsersController {
 	public String userAuthentication(@RequestBody AppUsers user) {
 
 		try {
+			user.setPassword(PasswordEncryption.getMd5(user.getPassword()));
 			AppUsers userFromDb = userServiceImplementation.getUserDetails(user.getUsername()).get();
 			if (userFromDb.getUsername().toLowerCase().equals(user.getUsername().toLowerCase())
 					&& userFromDb.getPassword().equals(user.getPassword())) {

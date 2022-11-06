@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
-import com.greatlearning.employeePortal.Repository.EmployeeRepository;
+
 import com.greatlearning.employeePortal.entity.Employee;
+import com.greatlearning.employeePortal.repository.EmployeeRepository;
 import com.greatlearning.employeePortal.service.EmployeeService;
 
 @Service
@@ -54,13 +55,13 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
 	// 9.Fetch List of employee by first name sorted in asc or desc
 	@Override
-	public List<Employee> getEmployeeByFirstNameSortedASC(String firstName) {
-		return (List<Employee>) employeeRepository.findAll(Sort.by(Direction.ASC ,firstName));
+	public List<Employee> getEmployeeByFirstNameSortedASC() {
+		return (List<Employee>) employeeRepository.findAll(Sort.by(Direction.ASC, "firstName"));
 	}
 
 	@Override
-	public List<Employee> getEmployeeByFirstNameSortedDESC(String firstName) {
-		return (List<Employee>) employeeRepository.findAll(Sort.by(Direction.DESC ,firstName));
+	public List<Employee> getEmployeeByFirstNameSortedDESC() {
+		return (List<Employee>) employeeRepository.findAll(Sort.by(Direction.DESC, "firstName"));
 	}
 
 }
